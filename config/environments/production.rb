@@ -46,7 +46,7 @@ Legalforms::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
+   config.assets.precompile += %w( bootstrap.css datePicker.css additional-method.js bootstarp-dropdown.js bootstrap-popover.js bootstarp-tooltip.js jquery_ujs.js jquery.js jquery.min.js jquery.validate.js jquery-ui-timepicker-addon.js nested_form.js validation.js)
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
