@@ -22,7 +22,16 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'mysql'
+group :development, :test do
+  gem 'mysql'
+end
+group :production do
+  gem 'pg'
+end
+group :production do
+  gem 'thin'
+end
+gem "heroku"
 gem "nifty-generators", :group => :development
 gem "nested_form"
 gem "prawn"
