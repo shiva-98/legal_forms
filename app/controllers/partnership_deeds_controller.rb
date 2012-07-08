@@ -7,11 +7,7 @@ class PartnershipDeedsController < ApplicationController
   def show
     @partnership_deed = PartnershipDeed.find(params[:id])
   
-   respond_to do |format|
-    format.html # show.html.erb
-    format.xml  { render :xml => @book }
-    format.pdf { render :layout => false }
-  end
+   render :action=>"show",:formats=>'pdf',:layout=>false
   end 
 
   def new
