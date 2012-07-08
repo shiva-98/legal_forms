@@ -77,6 +77,7 @@ class PartnershipDeedsController < ApplicationController
   end
   
   def save_add_remove_member
+    
     @new_partner=""
     @remove_partner=""
     
@@ -89,8 +90,9 @@ class PartnershipDeedsController < ApplicationController
     end
  
     @partnership_deed = PartnershipDeed.find(params[:id])
+    
     if @partnership_deed.update_attributes(params[:partnership_deed])
-      if @new_partner!="" and @remove_partner!=""
+      if @new_partner!="" or @remove_partner!=""
            prawnto :prawn => { :page_size => 'A4', 
                      :left_margin => 50,    
                      :right_margin => 50,   
