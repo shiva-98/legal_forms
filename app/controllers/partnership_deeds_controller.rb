@@ -7,6 +7,7 @@ class PartnershipDeedsController < ApplicationController
   def show
     @partnership_deed = PartnershipDeed.find(params[:id])
   
+  
    render :action=>"show",:formats=>'pdf',:layout=>false
   end 
 
