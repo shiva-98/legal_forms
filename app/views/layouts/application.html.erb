@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= controller.controller_name.humanize %> : <%= controller.action_name.humanize%></title>
+    
+  <%= stylesheet_link_tag "application","bootstrap",'datePicker', :media => "all" %>
+  <%= javascript_include_tag "jquery.min","jquery_ujs" %>
+  <%= javascript_include_tag "jquery.validate" %>
+  <%= javascript_include_tag "validation" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "bootstrap-dropdown" %>
+  <%= javascript_include_tag "bootstrap-tooltip" %>
+  <%= javascript_include_tag "bootstrap-popover" %>
+   <%= javascript_include_tag 'nested_form' %>
+   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/jquery-ui.min.js" ,'jquery-ui-timepicker-addon'%>
+   <%=stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css"%>
+   
+  
+  
+    <%= csrf_meta_tag %>
+    
+     <script>
+  $(document).ready(function() {
+    $("#partnership_deed_duration").datepicker({ dateFormat: 'dd-mm-yy' });
+     $("#partnership_deed_date_of_registration").datepicker({ dateFormat: 'dd-mm-yy' });
+    $(".date_of_joining").datepicker({ dateFormat: 'dd-mm-yy' });
+    
+  });
+  
+  </script>
+    <script type="text/javascript">
+
+jQuery(function() {
+    jQuery('form').live('nested:fieldAdded', function(event) {
+        jQuery(event.field).find('.date_of_joining').removeClass('hasDatepicker').datepicker({ dateFormat: 'dd-mm-yy' });
+    });
+});
+
+</script>
+  </head>
+ <body>
+<div class="container">
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a href="/welcome/index" class="brand">LegalForms</a>				
+      <ul class="nav pull-right">
+        <li class="dropdown">
+          <a href="#"	class="dropdown-toggle"	data-toggle="dropdown">
+            
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li></li>                                                                 
+            <li><a href="/login/logout"><i class='icon-lock'></i>&nbsp;Logout</a></li>
+          </ul>
+        </li>
+      </ul>					
+    </div>
+  </div>
+</div>
+<div class="row">
+<div class="span3 msi-nav">
+<ul class="nav nav-list">
+<% side_menus.each do|menu_header,menu_items| %>
+  <li class="nav-title"><%= menu_header %></li>
+  <% menu_items.each do|menu| %>
+      <% active_menu = active_controller?(menu) %>
+    <li <%if active_menu %>class="active"<% end %>><a href="<%= menu[:url] %>"><i class="<%= menu[:class]%> <%if active_menu %>icon-white<% end %>"></i><%= menu[:name] %></a></li>
+  <% end %>
+<% end %>
+</ul>
+</div>	
+<div class="span9">
+  <%= yield %>
+</div>
+</div>	
+</div>		
+</body>
+</html>

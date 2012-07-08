@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 transitional//EN">
+<html> <head>
+<title></title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/css" CHARSET="UTF-8"></meta>
+<meta NAME="Subject" CONTENT=""></meta>
+<meta NAME="Keywords" CONTENT=""></meta>
+<meta NAME="Author" CONTENT=""></meta>
+<meta NAME="Creator" CONTENT=""></meta>
+<meta NAME="Producer" CONTENT="CoolUtils DocEngine v2.5.1">
+</meta>
+<style>
+<!--
+body {background: no-repeat center fixed}
+DIV {position:absolute; font:8pt Tahoma; color: #000000}
+.S0 {font:bold 19spt Times New Roman; color: #000000; z-index: 1}
+.S1 {font:12pt Times New Roman; color: #000000; z-index: 1}
+.S2 {font:bold 15pt Times New Roman; color: #000000; z-index: 1}
+.S3 {font:10pt Arial; color: #000000; z-index: 1}
+.A1:link {font: 20pt Wingdings; text-decoration: none; color: #0000FF; background-color: #FFFFFF}
+.A1:visited {font: 20pt Wingdings; text-decoration: none; color: #0000FF; background-color: #FFFFFF}
+.A1:hover {font: 20pt Wingdings; text-decoration: none; color: #FFFFFF; background-color: #0000FF}
+SPAN {position: absolute; visibility: hidden}
+-->
+</style>
+</head>
+<body>
+<div style="padding-top:50px;padding-left:100px;width:100%">	
+<table id="container" width=100% border=0>
+	<tr>
+	<td class="S0" >Form No.1 </td><td class="S1" align="center" >Filing Fee</td>
+	</tr>
+	<tr>
+	<td class="S1" >Rule 4 (II) </td><td class="S1" align="center" >(Affix Court fee Stamp).</td>
+	</tr>
+	<tr ><td class="S2" align="center" colspan=5 style="padding-top: 60px;">THE  INDIAN  PARTNERSHIP  ACT, 1932</td></tr>
+	<tr ><td class="S3"   >Application for Registration of Firm by the Name</td>
+	<td class="S3"   style="font:bold" colspan=3 align="center"><%=@partnership_deed.firm_name.upcase %></td></tr>
+	<tr ><td class="S3"   style="padding-top: 30px;">Presented of forward to the registrar of Firm and for filing by</td>
+	<td class="S3"  style="font:bold" colspan=3 align="center"><%=@partnership_deed.filled_by.upcase %></td></tr>
+	<tr ><td class="S3"  style="padding-top: 40px;">We, the undersigned, being the partners of the firm</td>
+		<td class="S3"   style="padding-top: 40px;" colspan=3 align="center"><%=@partnership_deed.firm_name.upcase %></td>
+	</tr>
+	<tr><td colspan=5 class="S3" style="padding-top: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;hereby apply, for registration of the said firm and for theat purpose, supply the following particulars in pursuance of section 58 of the Indian Partnership Act, 1932;-			
+		</td></tr>	
+<tr ><td class="S3"   style="padding-top: 10px;">I)    The Firm's Name  : </td>
+	<td class="S3"   style="font:bold" colspan=3 align="center" style="padding-top: 10px;"><%=@partnership_deed.firm_name.upcase %></td></tr>
+	<tr><td class="S3" colspan=4>II)    Place of business </td></tr>
+	<tr><td class="S3" >a)  Principal Place </td><td class="S3" align="center">b)    Other Place</td></tr>
+	<tr><td class="S3" align="center"><%=@partnership_deed.firm_address.upcase %></td><td class="S3" align="center">Nil</td></tr>
+	<tr><td colspan=4><table><tr><td class="S3">SI. No.</td>
+		<td class="S3" >Name of Partner in full</td>
+		<td class="S3">Date of joining the firm</td>
+		<td class="S3">Permanent Address in full</td>
+		</table></td>
+		</tr>
+			<%i=1%>
+	<tr><td colspan=4><table>		
+	<%for partner in @partnership_deed.firm_partners do%>		
+		<tr><td class="S3"><%=i%></td>
+		<td class="S3"><%=partner.first_name%></td>
+		<td class="S3"><%=partner.created_at%></td>
+		<td class="S3"><%=partner.address1%></td>
+		<tr>	
+			<%i=i+1%>
+	<%end%>		
+	</table></td>
+		</tr>
+		
+</table>	
+</div>
+</body>
+</html>

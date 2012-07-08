@@ -1,0 +1,8 @@
+<p>
+  Name: <%= f.text_field :firm_name %>
+</p>
+<div id="firm_partners">
+  <%= render :partial => 'firm_partner', :collection => @partnership_deed.firm_partners %>
+</div>
+<p><%= add_firm_partner_link "Add a task" %></p>
+

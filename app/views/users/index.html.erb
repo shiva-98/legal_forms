@@ -1,0 +1,51 @@
+<div class="row">  
+  <div class="span3 msi-head"><h4>Customers</h4></div>
+  
+</div>
+  <!-- Error Message Block -->
+<div class="row">
+  <div class="span8 alert alert-error"></div>
+</div>
+
+<% unless @users.blank? %>
+  <div class="msi-list details-view">
+    <div class="row list-heading">
+      <div class="span4 controls">
+        <label class="checkbox inline">
+          <input id="toggleSelection" type="checkbox" value="toggle">
+          Name
+        </label>
+      </div> 
+      <div class="span2">Address</div> 
+      <div class="span2">Phone Number</div> 
+      <div class="span1">Action</div> 
+    </div>
+    
+            <% @users.each do |user| %>          
+        <div class="row">          
+          <div class="span4 controls">
+            <label class="checkbox inline">
+              <%#= check_box_tag('numbers[]', value = user.id) %>
+              <%= check_box_tag "user[user_ids][]", user.id, false, :name => "user[user_ids][]" %>
+              <!-- <input id="inlineCheckbox1" type="checkbox" value="option1">  -->
+              <%= link_to user.name, user%>
+            </label>
+          </div> 
+          <div class="span2"><%= user.address %></div>
+                    
+          <div class="span2">
+          <%= user.phone_number %></div>
+          <div class="span1">  
+            <%= link_to "", edit_user_path(user), :class => "icon-edit", :alt => "Edit User", :title => "Edit User" %>
+            <%= link_to '<i class="icon-trash"></i>'.html_safe, user_path(user), :confirm => 'Are you sure you want to delete?', :method => :delete, :alt=>"Delete User", :title=>"Delete User" %>
+            
+          
+          </div> 
+        </div>          
+      <% end %>       
+                                           
+
+<% else %>
+    <div class="alert alert-error" style="display:block">Record Not Found</div>
+<% end %>
+</div>

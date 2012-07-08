@@ -1,0 +1,15 @@
+one:
+  name: MyString
+  address: MyString
+  phone_number: MyString
+  status: false
+  created_at: 2012-06-05 22:39:49
+  updated_at: 2012-06-05 22:39:49
+
+two:
+  name: MyString
+  address: MyString
+  phone_number: MyString
+  status: false
+  created_at: 2012-06-05 22:39:49
+  updated_at: 2012-06-05 22:39:49

@@ -1,0 +1,124 @@
+<% title "Edit Partnership Deed Partners Detail" %>
+
+<%= nested_form_for @partnership_deed, :url => url_for(:controller => 'partnership_deeds', :action => 'save_add_remove_member') do |f| %>
+
+<div class="row button-box top">
+	<div class="span9" style="text-align:right;">
+		<% unless @partnership_deed.new_record?%>
+			<button type="submit" class="btn btn-success"><i class="icon-edit icon-white"></i>&nbsp;Update Partner Details</button>
+		
+		<% end %>
+		<a href="/partnership_deeds" class="btn btn-inverse"><i class="icon-remove icon-white"></i>&nbsp;Cancel</a>
+	</div>
+</div>	
+<div class="msi-list details-view">
+	<div class="alert alert-error" <% if @partnership_deed.errors.any? %> style="display: block;" <% end %>>
+		<%= @partnership_deed.errors.full_messages.join("<br/>").html_safe if @partnership_deed.errors.any?%>
+	</div>	
+	 <div class="row">
+		<div class="span4">
+			Firm Name: 
+		</div>
+		
+		<div class="span4">
+			 <%= @partnership_deed.firm_name%>
+		</div>
+	</div>
+    <div style="color:violet;display:table;font-size:20px;font-style:italic;font-weight: bold;padding-bottom: 10px;padding-left:10px;padding-top:10px">Partner Information</div>
+	<%= f.fields_for :firm_partners do |firm_partner_form| %>	
+	
+	<div class="row">
+		<div class="span4" >
+			First Name: 
+		</div>
+		<div class="span4">
+			<%= firm_partner_form.text_field :first_name, :placeholder=>"  First Name" ,:size=>20%>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			Last Name: 
+		</div>
+		<div class="span4">
+			<%= firm_partner_form.text_field :last_name, :placeholder=>"  Last Name" ,:size=>20%>
+		</div>
+	</div>
+    <div class="row">
+		<div class="span4" >
+			Address1: 
+		</div>
+		<div class="span4">
+			<%= firm_partner_form.text_field :address1, :placeholder=>"  Address" ,:size=>20%>
+		</div>
+	</div>	
+	<div class="row">
+		<div class="span4" >
+			Address2: 
+		</div>
+		<div class="span4">
+			<%= firm_partner_form.text_field :address2, :placeholder=>"  Address" ,:size=>20%>
+		</div>
+	</div>						
+	<div class="row">
+		<div class="span4">
+			Religion: 
+		</div>
+		<div class="span4">
+			<%= firm_partner_form.text_field :religion, :placeholder=>"  Religion" ,:size=>12%>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			Age: 
+		</div>
+		<div class="span4">
+			<%= firm_partner_form.text_field :age, :placeholder=>"  Age" ,:size=>2%>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			Father Name: 
+		</div>
+		<div class="span4">
+			<%= firm_partner_form.text_field :father_name, :placeholder=>"  Father's Name",:size=>20 %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			Date of Joining the firm: 
+		</div>
+		<div class="span4">
+			<%= firm_partner_form.text_field :date_of_joining, :placeholder=>"  Date of Joining the firm",:size=>30,:class=>"date_of_joining" %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			
+		</div>
+		<div class="span4">
+			<%= firm_partner_form.link_to_remove "Remove this partner" %>
+		</div>
+	</div>
+	
+	<%end%>
+	<div class="row">
+		<div class="span4">
+			<%= f.link_to_add "Add a Partner", :firm_partners %>
+		</div>
+		<div class="span4">
+			
+		</div>
+	</div>
+	
+	
+</div>
+<div class="row button-box bottom">
+	<div class="span9" style="text-align:right;">
+		<% unless @partnership_deed.new_record?%>
+			<button type="submit" class="btn btn-success"><i class="icon-edit icon-white"></i>&nbsp;Update Partner Details</button>
+		
+		<% end %>
+		<a href="/partnership_deeds" class="btn btn-inverse"><i class="icon-remove icon-white"></i>&nbsp;Cancel</a>
+	</div>
+</div>
+<% end %>
