@@ -80,7 +80,7 @@ class PartnershipDeedsController < ApplicationController
     
     @new_partner=""
     @remove_partner=""
-    
+    if(params[:partnership_deed]!=nil)
     params[:partnership_deed][:"firm_partners_attributes"].each_pair do |key,value|
       if key.include?("new_")
       @new_partner+= "#{value[:first_name]} #{value[:last_name]},\nS/O #{value[:father_name]},\n #{value[:address1]} \n#{value[:address2]}\n Date of his joining to be partner: #{value[:date_of_joining]}\n\n"
@@ -88,7 +88,7 @@ class PartnershipDeedsController < ApplicationController
       @remove_partner+= "#{value[:first_name]} #{value[:last_name]},\nS/O #{value[:father_name]},\n #{value[:address1]} \n#{value[:address2]}\n\n" 
       end
     end
- 
+    end
     @partnership_deed = PartnershipDeed.find(params[:id])
     
     if @partnership_deed.update_attributes(params[:partnership_deed])
