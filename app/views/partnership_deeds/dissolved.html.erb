@@ -1,0 +1,96 @@
+<style type="text/css">
+
+
+
+#partnership-form p.error {
+	margin-left: 9px;
+	width: auto;
+	display: inline;
+	color: red;
+}
+</style>
+  <script>
+  $(document).ready(function(){
+  	 $("#dissolved-form").validate();
+  });
+  $(document).ready(function(){
+  $("#test-ajax").click(function() {
+
+    var url = "/partnership_deeds/1/update_dissolved_date"; // the script where you handle the form input.
+  if ($("#dissolved-form").validate().form() == true) {
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#dissolved-form").serialize(), // serializes the form's elements.
+           async: true,
+          
+           success: function(response)
+           {
+               window.open("/dissolved.pdf")
+               var url = "/partnership_deeds";    
+			$(location).attr('href',url);
+               return false;
+           },
+           complete: function()
+           {
+           	
+               
+           }
+         });
+         
+}
+    return false; // avoid to execute the actual submit of the form.
+});
+});
+  </script>
+<% title "Edit Partnership Deed" %>
+
+
+
+<%= nested_form_for @partnership_deed, :url => url_for(:controller => 'partnership_deeds', :action => 'update_dissolved_date'),:html=>{:id=>"dissolved-form"} do |f| %>
+
+<div class="row button-box top">
+	<div class="span9" style="text-align:right;">
+		<% unless @partnership_deed.new_record?%>
+			<button type="submit" class="btn btn-success"><i class="icon-edit icon-white"></i>&nbsp;Update</button>
+		<% else %>
+			<button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i>&nbsp;Add</button>
+		<% end %>
+		<a href="/partnership_deeds" class="btn btn-inverse"><i class="icon-remove icon-white"></i>&nbsp;Cancel</a>
+	</div>
+</div>	
+<div class="msi-list details-view">
+	
+	 <div style="color:violet;display:table;font-size:20px;font-style:italic;font-weight: bold;padding-bottom: 10px;padding-left:10px;padding-top:10px">Edit Information relating to Partnership Firm</div>
+
+	<div class="row">
+		<div class="span4">
+			Dissolved Date: 
+		</div>
+		
+		<div class="span4">
+			<div id="datepicker"></div>
+			<%if @partnership_deed.dissolved_date.blank?%>
+			 <%= f.text_field :dissolved_date , :class=>"required"%>
+			<%else%>
+			<%= f.text_field :dissolved_date,:value=>@partnership_deed.dissolved_date.strftime("%d-%m-%Y") , :class=>"required"%>
+			<%end%> 
+		</div>
+	</div>
+	
+    
+	
+</div>
+<div class="row button-box bottom">
+	<div class="span9" style="text-align:right;">
+		<% unless @partnership_deed.new_record?%>
+			<button type="submit" class="btn btn-success" id="test-ajax"><i class="icon-edit icon-white"></i>&nbsp;Update</button>
+		<% else %>
+			<button type="submit" class="btn btn-success" ><i class="icon-plus icon-white"></i>&nbsp;Add</button>
+		<% end %>
+		<a href="/partnership_deeds" class="btn btn-inverse"><i class="icon-remove icon-white"></i>&nbsp;Cancel</a>
+	</div>
+</div>
+<% end %>
+
+

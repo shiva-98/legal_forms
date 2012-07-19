@@ -1,5 +1,19 @@
 <% title "New Customer" %>
+<style type="text/css">
 
+#user-form1 p.error {
+	margin-left: 9px;
+	width: auto;
+	display: inline;
+	color: red;
+}
+
+</style>
+  <script>
+  $(document).ready(function(){
+  	 $("#user-form1").validate();
+  });
+  </script>
 <%= render 'form' %>
 
 

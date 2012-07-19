@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605181949) do
+ActiveRecord::Schema.define(:version => 20120714071133) do
 
   create_table "firm_partners", :force => true do |t|
     t.string   "first_name"
@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(:version => 20120605181949) do
     t.boolean  "status"
     t.integer  "age"
     t.string   "father_name"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.string   "religion",            :limit => 45
   end
 
   create_table "partnership_deeds", :force => true do |t|
@@ -31,8 +32,13 @@ ActiveRecord::Schema.define(:version => 20120605181949) do
     t.string   "firm_address"
     t.string   "filled_by"
     t.datetime "duration"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.datetime "next_renewal_date"
+    t.string   "firm_address1"
+    t.string   "registration_number"
+    t.datetime "date_of_registration"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

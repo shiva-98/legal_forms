@@ -1,6 +1,6 @@
 
 
-<%= nested_form_for @partnership_deed,:html=>{:id=>"org-form"} do |f| %>
+<%= nested_form_for @partnership_deed,:html=>{:id=>"partnership-form"} do |f| %>
 
 <div class="row button-box top">
 	<div class="span9" style="text-align:right;">
@@ -13,9 +13,7 @@
 	</div>
 </div>	
 <div class="msi-list details-view">
-	<div class="alert alert-error" <% if @partnership_deed.errors.any? %> style="display: block;" <% end %>>
-		<%= @partnership_deed.errors.full_messages.join("<br/>").html_safe if @partnership_deed.errors.any?%>
-	</div>	
+	
 	 <div style="color:violet;display:table;font-size:20px;font-style:italic;font-weight: bold;padding-bottom: 10px;padding-left:10px;padding-top:10px">Information relating to Partnership Firm</div>
 	<div class="row">
 		<div class="span4">
@@ -32,7 +30,7 @@
 		</div>
 		
 		<div class="span4">
-			 <%= f.text_field :firm_name,  :placeholder=>"  Proposed name for the firm"%>
+			 <%= f.text_field :firm_name,  :placeholder=>"  Proposed name for the firm", :class=>"required"%>
 		</div>
 	</div>
 	<div class="row">
@@ -60,7 +58,7 @@
 		</div>
 		<div class="span4">
 			
-			<%= f.text_field :firm_address %><br /><em class="note">Street address, P.O. box, company name, c/o</em>
+			<%= f.text_field :firm_address , :class=>"required"%><br /><em class="note">Street address, P.O. box, company name, c/o</em>
 		</div>
 	</div>
 	<div class="row">
@@ -76,7 +74,7 @@
 			Filled by: 
 		</div>
 		<div class="span4">
-			<%= f.text_field :filled_by ,  :placeholder=>"  Filled By Name and Address" ,:size=>67%>
+			<%= f.text_field :filled_by, :class=>"required" ,  :placeholder=>"  Filled By Name and Address" ,:size=>67%>
 		</div>
 	</div>			
 	<div class="row">
@@ -85,7 +83,7 @@
 		</div>
 		<div class="span4">
 			<div id="datepicker"></div>
-    		<%= f.text_field :duration %>
+    		<%= f.text_field :duration , :class=>"required"%>
 		</div>
 	</div>	
 	
@@ -97,7 +95,7 @@
 			First Name: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :first_name, :placeholder=>"  First Name" ,:size=>20%>
+			<%= firm_partner_form.text_field :first_name, :placeholder=>"  First Name" , :class=>"required"%>
 		</div>
 	</div>
 	<div class="row">
@@ -105,7 +103,7 @@
 			Last Name: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :last_name, :placeholder=>"  Last Name" ,:size=>20%>
+			<%= firm_partner_form.text_field :last_name, :placeholder=>"  Last Name" %>
 		</div>
 	</div>		
 	 <div class="row">
@@ -113,7 +111,7 @@
 			Address1: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :address1, :placeholder=>"  Address" ,:size=>20%>
+			<%= firm_partner_form.text_field :address1, :placeholder=>"  Address" , :class=>"required"%>
 		</div>
 	</div>	
 	<div class="row">
@@ -121,7 +119,7 @@
 			Address2: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :address2, :placeholder=>"  Address" ,:size=>20%>
+			<%= firm_partner_form.text_field :address2, :placeholder=>"  Address" %>
 		</div>
 	</div>								
 	<div class="row">
@@ -129,7 +127,7 @@
 			Religion: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :religion, :placeholder=>"  Religion" ,:size=>12%>
+			<%= firm_partner_form.text_field :religion, :placeholder=>"  Religion" , :class=>"required"%>
 		</div>
 	</div>
 	<div class="row">
@@ -137,7 +135,7 @@
 			Age: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :age, :placeholder=>"  Age" ,:size=>2%>
+			<%= firm_partner_form.text_field :age, :placeholder=>"  Age" , :class=>"required"%>
 		</div>
 	</div>
 	<div class="row">
@@ -145,7 +143,7 @@
 			Father Name: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :father_name, :placeholder=>"  Father's Name",:size=>20 %>
+			<%= firm_partner_form.text_field :father_name, :placeholder=>"  Father's Name", :class=>"required" %>
 		</div>
 	</div>
 	<div class="row">
@@ -153,7 +151,7 @@
 			Date of Joining the firm: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :date_of_joining, :placeholder=>"  Date of Joining the firm",:size=>30,:class=>"date_of_joining" %>
+			<%= firm_partner_form.text_field :date_of_joining, :placeholder=>"  Date of Joining the firm",:size=>30,:class=>"date_of_joining required" %>
 		</div>
 	</div>
 	<div class="row">

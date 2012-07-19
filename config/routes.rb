@@ -25,6 +25,8 @@ Legalforms::Application.routes.draw do
         get 'add_remove_member'
         put 'save_add_remove_member'
         get 'renewal'
+        get 'dissolved'
+        put 'update_dissolved_date'
       end
     end  
   #

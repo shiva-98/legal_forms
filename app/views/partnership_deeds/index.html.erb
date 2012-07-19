@@ -47,21 +47,25 @@
 				
 
                 <div class="span1">
+                	<%if partnership_deed.dissolved_date.blank?%>
                 	<%if partnership_deed.next_renewal_date.strftime("%d-%m-%Y") > Date.new.strftime("%d-%m-%Y")%>
       <span class="status-active">Live</span>
       <%else%>
       <span class="status-expired">Expired</span>
       <%end%> 	
+      <%else%>
+      <span class="status-expired">Dissolved</span>
+      <%end%>
                 </div>
                 <div class="span2"><%= partnership_deed.next_renewal_date.strftime("%d-%m-%Y")  %></div>
                
                 <div class="span2">
                 	
                 	    <%= link_to "Edit", edit_partnership_deed_path(partnership_deed) %> |
-      					<%= link_to "Destroy", partnership_deed, :confirm => 'Are you sure?', :method => :delete %>|<br/> 
+      					<%= link_to "Destroy", partnership_deed, :confirm => 'Are you sure?', :method => :delete %> |<br/> 
       					<%= link_to "Add or Remove Partner", add_remove_member_partnership_deed_path(partnership_deed) %> |
-    
-     <%= link_to "Renewal", renewal_partnership_deed_path(partnership_deed) %>
+    					<%= link_to "Renewal", renewal_partnership_deed_path(partnership_deed) %> |
+    					<%= link_to "Dissolved the Firm", dissolved_partnership_deed_path(partnership_deed) %>
                   
                 </div>
                 

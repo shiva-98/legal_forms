@@ -6,6 +6,7 @@
   <%= stylesheet_link_tag "application","bootstrap",'datePicker', :media => "all" %>
   <%= javascript_include_tag "jquery.min","jquery_ujs" %>
   <%= javascript_include_tag "jquery.validate" %>
+
   <%= javascript_include_tag "validation" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "bootstrap-dropdown" %>
@@ -24,7 +25,7 @@
     $("#partnership_deed_duration").datepicker({ dateFormat: 'dd-mm-yy' });
      $("#partnership_deed_date_of_registration").datepicker({ dateFormat: 'dd-mm-yy' });
     $(".date_of_joining").datepicker({ dateFormat: 'dd-mm-yy' });
-    
+    $("#partnership_deed_dissolved_date").datepicker({ dateFormat: 'dd-mm-yy' });
   });
   
   </script>

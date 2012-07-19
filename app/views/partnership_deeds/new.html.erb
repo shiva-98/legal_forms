@@ -1,5 +1,20 @@
 <% title "New Partnership Deed" %>
+<style type="text/css">
 
+
+
+#partnership-form p.error {
+	margin-left: 9px;
+	width: auto;
+	display: inline;
+	color: red;
+}
+</style>
+  <script>
+  $(document).ready(function(){
+  	 $("#partnership-form").validate();
+  });
+  </script>
 <%= render 'form' %>
 
 

@@ -1,6 +1,52 @@
+<style type="text/css">
+
+
+
+#partnership-form p.error {
+	margin-left: 9px;
+	width: auto;
+	display: inline;
+	color: red;
+}
+</style>
+  <script>
+  $(document).ready(function(){
+  	 $("#partnership-form").validate();
+  });
+  $(document).ready(function(){
+  $("#test-ajax").click(function() {
+
+    var url = "/partnership_deeds/1/save_add_remove_member"; // the script where you handle the form input.
+    if ($("#partnership-form").validate().form() == true) {
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#partnership-form").serialize(), // serializes the form's elements.
+           success: function(response)
+           {
+           	
+           	window.open("/form_5.pdf")
+           	return false;
+               
+           },
+           complete: function()
+           {
+           	
+           	
+           	var url = "/partnership_deeds";    
+			$(location).attr('href',url);
+               
+           }
+         });
+}
+    return false; // avoid to execute the actual submit of the form.
+});
+});
+  </script>
 <% title "Edit Partnership Deed Partners Detail" %>
 
-<%= nested_form_for @partnership_deed, :url => url_for(:controller => 'partnership_deeds', :action => 'save_add_remove_member') do |f| %>
+<%= nested_form_for @partnership_deed, :url => url_for(:controller => 'partnership_deeds', :action => 'save_add_remove_member'),:html=>{:id=>"partnership-form"} do |f| %>
+
 
 <div class="row button-box top">
 	<div class="span9" style="text-align:right;">
@@ -12,9 +58,7 @@
 	</div>
 </div>	
 <div class="msi-list details-view">
-	<div class="alert alert-error" <% if @partnership_deed.errors.any? %> style="display: block;" <% end %>>
-		<%= @partnership_deed.errors.full_messages.join("<br/>").html_safe if @partnership_deed.errors.any?%>
-	</div>	
+
 	 <div class="row">
 		<div class="span4">
 			Firm Name: 
@@ -32,7 +76,7 @@
 			First Name: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :first_name, :placeholder=>"  First Name" ,:size=>20%>
+			<%= firm_partner_form.text_field :first_name, :placeholder=>"  First Name" , :class=>"required"%>
 		</div>
 	</div>
 	<div class="row">
@@ -48,7 +92,7 @@
 			Address1: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :address1, :placeholder=>"  Address" ,:size=>20%>
+			<%= firm_partner_form.text_field :address1, :placeholder=>"  Address" , :class=>"required"%>
 		</div>
 	</div>	
 	<div class="row">
@@ -64,7 +108,7 @@
 			Religion: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :religion, :placeholder=>"  Religion" ,:size=>12%>
+			<%= firm_partner_form.text_field :religion, :placeholder=>"  Religion" , :class=>"required"%>
 		</div>
 	</div>
 	<div class="row">
@@ -72,7 +116,7 @@
 			Age: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :age, :placeholder=>"  Age" ,:size=>2%>
+			<%= firm_partner_form.text_field :age, :placeholder=>"  Age" , :class=>"required"%>
 		</div>
 	</div>
 	<div class="row">
@@ -80,7 +124,7 @@
 			Father Name: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :father_name, :placeholder=>"  Father's Name",:size=>20 %>
+			<%= firm_partner_form.text_field :father_name, :placeholder=>"  Father's Name", :class=>"required"%>
 		</div>
 	</div>
 	<div class="row">
@@ -88,7 +132,7 @@
 			Date of Joining the firm: 
 		</div>
 		<div class="span4">
-			<%= firm_partner_form.text_field :date_of_joining, :placeholder=>"  Date of Joining the firm",:size=>30,:class=>"date_of_joining" %>
+			<%= firm_partner_form.text_field :date_of_joining, :placeholder=>"  Date of Joining the firm",:class=>"date_of_joining required" %>
 		</div>
 	</div>
 	<div class="row">
@@ -115,7 +159,7 @@
 <div class="row button-box bottom">
 	<div class="span9" style="text-align:right;">
 		<% unless @partnership_deed.new_record?%>
-			<button type="submit" class="btn btn-success"><i class="icon-edit icon-white"></i>&nbsp;Update Partner Details</button>
+			<button type="submit" class="btn btn-success" id="test-ajax"><i class="icon-edit icon-white"></i>&nbsp;Update Partner Details</button>
 		
 		<% end %>
 		<a href="/partnership_deeds" class="btn btn-inverse"><i class="icon-remove icon-white"></i>&nbsp;Cancel</a>

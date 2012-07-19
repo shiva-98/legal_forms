@@ -54,7 +54,7 @@ class PartnershipDeedsController < ApplicationController
                      :right_margin => 50,   
                      :top_margin => 50,    
                      :bottom_margin => 50}, 
-             :filename => "form_3", :inline => true
+             :filename => "form_2", :inline => true
          render :action=>"form_2",:formats=>'pdf',:layout=>false
        else  
         
@@ -93,12 +93,13 @@ class PartnershipDeedsController < ApplicationController
     
     if @partnership_deed.update_attributes(params[:partnership_deed])
       if @new_partner!="" or @remove_partner!=""
-           prawnto :prawn => { :page_size => 'A4', 
-                     :left_margin => 50,    
-                     :right_margin => 50,   
-                     :top_margin => 50,    
-                     :bottom_margin => 50}, 
-             :filename => "form_3", :inline => true
+           # prawnto :prawn => { :page_size => 'A4', 
+                     # :left_margin => 50,    
+                     # :right_margin => 50,   
+                     # :top_margin => 50,    
+                     # :bottom_margin => 50,
+                     # :page_layout => :portrait}, 
+             # :filename => "form_5.pdf", :inline => true
          render :action=>"form_5",:formats=>'pdf',:layout=>false
       else
         redirect_to :action=>"index"
@@ -118,5 +119,23 @@ class PartnershipDeedsController < ApplicationController
                      :bottom_margin => 50}, 
              :filename => "renewal", :inline => true
          render :action=>"renewal",:formats=>'pdf',:layout=>false
+  end
+  
+  def dissolved
+    
+     @partnership_deed = PartnershipDeed.find(params[:id])
+  end
+  
+  def update_dissolved_date
+    @partnership_deed = PartnershipDeed.find(params[:id])
+    @partnership_deed.update_attributes(params[:partnership_deed])
+     
+         # prawnto :prawn => { :page_size => 'A4', 
+                     # :left_margin => 50,    
+                     # :right_margin => 50,   
+                     # :top_margin => 50,    
+                     # :bottom_margin => 50}, 
+             # :filename => "dissolved.pdf", :inline => true
+         render :action=>"dissolved",:formats=>'pdf',:layout=>false
   end
 end

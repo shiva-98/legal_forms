@@ -1,4 +1,4 @@
-Prawn::Document.generate "public/form_5.pdf",:page_size => 'A4',:left_margin => 50,:right_margin => 50,:top_margin => 50,:bottom_margin => 50 do |pdf|
+Prawn::Document.generate "public/dissolved.pdf",:page_size => 'A4',:left_margin => 50,:right_margin => 50,:top_margin => 50,:bottom_margin => 50 do |pdf|
 pdf.font "Helvetica"
 pdf.draw_text "Reg. No.: "+@partnership_deed.registration_number, :at => [270,760], :size => 8
 pdf.draw_text "Date: "+Date.today.to_s, :at => [285,750], :size => 8
@@ -31,27 +31,16 @@ table_data =
     
   ]]
   pdf.table table_data 
-    pdf.move_down(10)  
-  table_data = 
-  [[Prawn::Table::Cell::Text.new( pdf, [0,0], :content =>"The Constitution of the firm #{@partnership_deed.firm_name} has been altered as follows:",:inline_format => true,:align=>:center, :border_width => 0,:width=>270,:size=>9)
-    
-  ]]
-  pdf.table table_data 
+
    pdf.move_down(10) 
  
 table_data = 
-  [[Prawn::Table::Cell::Text.new( pdf, [0,0], :content =>"Name and full address of the incoming partner and date of his joining the firm",:inline_format => true,:align=>:center, :border_width => 1,:width=>135,:size=>9),
-    Prawn::Table::Cell::Text.new( pdf, [0,0], :content =>"Name and full address of the outgoing partner and date of his partner and date of his ceasing to be partner",:inline_format => true,:align=>:center, :border_width => 1,:width=>135,:size=>9)
+  [[Prawn::Table::Cell::Text.new( pdf, [0,0], :content =>"The firm #{@partnership_deed.firm_name} has been dissolved with effect from the #{@partnership_deed.dissolved_date.strftime('%d-%m-%Y')}",:inline_format => true,:align=>:center, :border_width => 0,:width=>270,:size=>9)
   ]]
    pdf.table table_data
    
    
-table_data = 
-  [[Prawn::Table::Cell::Text.new( pdf, [0,0], :content =>"#{@new_partner}",:inline_format => true,:align=>:center, :border_width => 1,:width=>135,:size=>9),
-    Prawn::Table::Cell::Text.new( pdf, [0,0], :content =>"#{@remove_partner}",:inline_format => true,:align=>:center, :border_width => 1,:width=>135,:size=>9)
-  ]]
-   pdf.table table_data   
-   pdf.move_down(30)
+
 
 table_data = 
   [[Prawn::Table::Cell::Text.new( pdf, [0,0], :content =>"Station:",:inline_format => true, :border_width => 0,:width=>135,:size=>9),
