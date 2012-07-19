@@ -18,20 +18,22 @@
 
     var url = "/partnership_deeds/1/update_dissolved_date"; // the script where you handle the form input.
   if ($("#dissolved-form").validate().form() == true) {
-  	e.preventDefault();
+  	
     $.ajax({
            type: "POST",
            url: url,
            data: $("#dissolved-form").serialize(), // serializes the form's elements.
-           async: false,
+           async: true,
           
            success: function(response)
            {
            	 window.open("/dissolved.pdf",'_blank', 'toolbar=0,location=0,menubar=0')
-            var url = "/partnership_deeds";    
+              return false;
+           },
+           complete: function(){
+           	 var url = "/partnership_deeds";    
 			$(location).attr('href',url);
            }
-           
          });
          
 }
