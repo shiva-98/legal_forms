@@ -23,9 +23,9 @@
            type: "POST",
            url: url,
            data: $("#dissolved-form").serialize(), // serializes the form's elements.
-           async: true,
+           async: false,
           
-           success: function(response)
+           success: function()
            {
            	 window.open("/dissolved.pdf",'_blank', 'toolbar=0,location=0,menubar=0')
               return false;
