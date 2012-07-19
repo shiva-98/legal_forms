@@ -26,16 +26,11 @@
           
            success: function(response)
            {
-               window.open("/dissolved.pdf")
-               var url = "/partnership_deeds";    
+           	 window.open("/dissolved.pdf",'_blank', 'toolbar=0,location=0,menubar=0')
+            var url = "/partnership_deeds";    
 			$(location).attr('href',url);
-               return false;
-           },
-           complete: function()
-           {
-           	
-               
            }
+           
          });
          
 }

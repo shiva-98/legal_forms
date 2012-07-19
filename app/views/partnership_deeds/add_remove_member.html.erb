@@ -25,15 +25,8 @@
            success: function(response)
            {
            	
-           	window.open("/form_5.pdf")
-           	return false;
-               
-           },
-           complete: function()
-           {
-           	
-           	
-           	var url = "/partnership_deeds";    
+           	window.open("/form_5.pdf",'_blank')
+           	 var url = "/partnership_deeds";    
 			$(location).attr('href',url);
                
            }
