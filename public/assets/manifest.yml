@@ -6,9 +6,10 @@ jquery_ujs.js: jquery_ujs-c1b5fe64dd9f1e25b57a1924a72fbe0a.js
 glyphicons-halflings-white.png: glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
 bootstrap.css: bootstrap-5eff974a8ed9d55961bfbbe36d60085e.css
 jquery.js: jquery-4ee955127e65ebe746864758906f59d6.js
-jquery.validate.js: jquery.validate-d7cb9f8ef59de6ed25ded3ada933f28e.js
+jquery.validate.js: jquery.validate-877f8880671e20dd99e8f1906ee5ded8.js
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
 application.css: application-8968c425c1d037519695da5d4a7fc669.css
+fancybox_sprite.png: fancybox_sprite-aa95990c1f545437e40ab887d1df9880.png
 validation.js: validation-eee458c05c6485a7152dbf93c72731d4.js
 bootstrap-popover.js: bootstrap-popover-275d2033d41df6928f2e24958b2b980c.js
 glyphicons-halflings.png: glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png
@@ -17,3 +18,4 @@ bootstrap-dropdown.js: bootstrap-dropdown-44e9d8531cc5ab7dfb3ef8469aa65aed.js
 application.js: application-ff480d2b2fcaef33dafb65e905d9ef0a.js
 datePicker.css: datePicker-72292e2d727562531d79201b770a3e51.css
 bootstrap-tooltip.js: bootstrap-tooltip-98a7971b0e105ee0980648e86be35056.js
+fancybox_loading.gif: fancybox_loading-d2048016f98e3f94cb0a912029d79163.gif
