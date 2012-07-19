@@ -18,11 +18,12 @@
 
     var url = "/partnership_deeds/1/update_dissolved_date"; // the script where you handle the form input.
   if ($("#dissolved-form").validate().form() == true) {
+  	e.preventDefault();
     $.ajax({
            type: "POST",
            url: url,
            data: $("#dissolved-form").serialize(), // serializes the form's elements.
-           async: true,
+           async: false,
           
            success: function(response)
            {

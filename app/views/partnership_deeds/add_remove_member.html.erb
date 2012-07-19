@@ -21,6 +21,7 @@
     $.ajax({
            type: "POST",
            url: url,
+           async:	false,
            data: $("#partnership-form").serialize(), // serializes the form's elements.
            success: function(response)
            {
